@@ -1,0 +1,33 @@
+/**
+ * @param {character[][]} board
+ * @return {number}
+ */
+function numRookCaptures (board) {for (i=0; i<8; i++) {
+  let count = 0;
+  for (j=0;j<8; j++) {
+    if(board[i][j]==="R") {
+      let m = i;
+      let n = j;
+      horizontal = board[m].filter(e=> e!=='.').join('');
+      if (horizontal.includes('Rp')) {
+        count++;
+      }
+      if (horizontal.includes('pR')) {
+        count++;
+      }
+      let vertical = [];
+      for(k=0;k<8;k++) {
+        vertical.push(board[k][n]);
+      }
+      let vertical1 = vertical.filter(e=> e!=='.').join('');
+      if (vertical1.includes('Rp')) {
+        count++;
+      }
+      if (vertical1.includes('pR')) {
+        count++;
+      }
+      return count;
+    }
+  }
+}
+}
