@@ -1,14 +1,21 @@
 /**
- * @param {character[][]} board
- * @return {number}
+ * Board will be an array of 8 arrays each having lenght of 8. 
+ * Return will be a count of options (can be between 0 and 4)
  */
+ 
+ 
 function numRookCaptures (board) {for (i=0; i<8; i++) {
   let count = 0;
   for (j=0;j<8; j++) {
+  
     if(board[i][j]==="R") {
+    /* finding the Rook's position */
       let m = i;
       let n = j;
+      /* grabbing the horizontal array the Rook is in */
+      /* filtering out empty spots */
       horizontal = board[m].filter(e=> e!=='.').join('');
+      /* if there is a clear path to pawn, increase the count */
       if (horizontal.includes('Rp')) {
         count++;
       }
@@ -19,6 +26,7 @@ function numRookCaptures (board) {for (i=0; i<8; i++) {
       for(k=0;k<8;k++) {
         vertical.push(board[k][n]);
       }
+      /* grabbing the vertical 'array' the Rook is in */
       let vertical1 = vertical.filter(e=> e!=='.').join('');
       if (vertical1.includes('Rp')) {
         count++;
